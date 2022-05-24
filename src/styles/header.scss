@@ -1,15 +1,18 @@
 .header {
   .navigation {
-    gap: 0.25em;
-    .nav-item.auth {
-      position: relative;
-      .auth-panel {
-        padding: 0.25em;
-        position: absolute;
-        transform-origin: top;
-        transition: 0.5s ease;
-        border: 1px $red solid;
-      }
+    gap: 0.5em;
+    font-size: 1.75em;
+    position: relative;
+    width: fit-content;
+    .auth-panel {
+      font-size: 1em;
+      padding: 0.25em;
+      position: absolute;
+      transform-origin: top;
+      transition: transform 0.5s ease;
+      border: 1px $red solid;
+      bottom: -250%;
+      right: 0;
     }
   }
 }

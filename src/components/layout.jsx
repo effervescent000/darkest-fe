@@ -14,12 +14,14 @@ const Layout = () => {
     <>
       <div className="header">
         {/* I'm thinking of a header with a background banner */}
-        <div className="navigation d-flex">
-          <div className="nav-item">Roster</div>
-          <div className="nav-item">Simulation</div>
-          <div className="nav-item">Town</div>
-          <div className="nav-item auth" onClick={toggleAuthPanel}>
-            Auth
+        <div className="navigation-wrapper d-flex justify-center">
+          <div className="navigation d-flex">
+            <div className="nav-item">Roster</div>
+            <div className="nav-item">Simulation</div>
+            <div className="nav-item">Town</div>
+            <div className="nav-item auth" onClick={toggleAuthPanel}>
+              Auth
+            </div>
             <AuthPanel hidden={authPanelHidden} />
           </div>
         </div>
