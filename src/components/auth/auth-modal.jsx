@@ -1,13 +1,21 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Form } from "react-final-form";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+
+import APIService from "../../utils/api-service";
+import { urls } from "../../constants/constants";
+import { userConstants } from "../../constants/user.constants";
 
 import TextInputField from "../form-components/text-input";
 
 const AuthModal = ({ newUser, toggle, isOpen }) => {
+  const dispatch = useDispatch();
+
   const onSubmit = (values) => {
-    // send values to either login or register endpoint
-    // depending on the value of the newUser prop
+    const callback = (response) =>
+      dispatch({ type: userConstants.SET_USER, payload: response.data });
+    APIService.POST(newUser ? urls.SIGNUP : urls.LOGIN, values, callback);
   };
 
   return (
@@ -24,7 +32,9 @@ const AuthModal = ({ newUser, toggle, isOpen }) => {
             </ModalBody>
             <ModalFooter>
               <div className="buttons-wrapper">
-                <button type="button">Cancel</button>
+                <button type="button" onClick={toggle}>
+                  Cancel
+                </button>
                 <button type="submit">Submit</button>
               </div>
             </ModalFooter>
