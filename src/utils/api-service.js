@@ -1,7 +1,7 @@
 import axios from "axios";
 import jsCookie from "js-cookie";
 
-export class APIService {
+class APIService {
   async makeBodylessRequest(endpoint, method) {
     const response = await axios({
       method: method,
