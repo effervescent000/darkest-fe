@@ -12,10 +12,6 @@ export class APIService {
     return response;
   }
 
-  async GET(endpoint, callback) {
-    this.makeBodylessRequest(endpoint, "get").then(callback);
-  }
-
   async makeBodyRequest(endpoint, body, method) {
     const response = await axios({
       method: method,
@@ -25,6 +21,10 @@ export class APIService {
       headers: { "X-CSRF-TOKEN": jsCookie.get("csrf_access_token") },
     });
     return response;
+  }
+
+  async GET(endpoint, callback, catchCallback = (error) => console.log(error)) {
+    this.makeBodylessRequest(endpoint, "get").then(callback).catch(catchCallback);
   }
 
   async POST(endpoint, body, callback, catchCallback = (error) => console.log(error)) {
